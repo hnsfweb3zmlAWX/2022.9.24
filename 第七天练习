@@ -1,0 +1,91 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+
+#include<stdio.h>
+
+int main()
+{
+	int ret = 0;
+	int ch = 0;
+	char password[20] = { 0 };
+	printf("Please enter your password ：");
+	//输入密码并放入数组password中
+	scanf("%s", password);
+	//输入完成时的回车'\n'会被getchar()函数从缓冲区读走，故进行判断若键盘输入为'\n'则将其读走，若不为'\n'则存入数组
+	while ((ch = getchar()) != '\n')
+	{
+		;
+	}
+	//以上循环体内不进行操作，实际作用仅为从缓冲区读走'\n'
+	printf("Please your password (Y\N) ：");
+	//上方getchar()函数已经将'\n'读走，缓冲池中现在只余留有键盘输入的字符串'password'
+	ret = getchar();
+	if (ret == 'Y')
+	{
+		printf("Success ！\n");
+	}
+	else
+	{
+		printf("Give up ！\n");
+	}
+
+	int a = 0;
+	int b = 0;
+	//若没有获取到结束符，则不断进行循环从键盘输入获取字符，直到接收到结束符为止
+	while ((a = getchar()) != EOF)
+	{
+		//加入序列合法性校验，若输入不为合法数字则跳出当前循环，继续从键盘输入获取字符，若为合法数字则进行数组存储与打印
+		if ('0' > b || '9' < b)
+		{
+			continue;
+		}
+		else
+		{
+			putchar(a);
+		}
+	}
+
+	//最终实现：
+	//printf("Finally ：\n");
+ //   char a = 0;
+	////char Password[20] = { 0 };
+	//char password[20] = { 0 };
+	//printf("Please enter your password ：");
+	//scanf("%s", password);
+	////getchar函数循环原因：在进行scanf函数操作时创建了缓冲区，输入的数据被存入缓冲区，其中包括了请确认的"Enter"即"\n"，而getchar函数是从缓冲区中读取，在读取时从缓冲区读取了其中的"\n"
+	////解决方式为提前将缓冲区中的"\n"读出，以避免其被getchar函数读到：
+	//getchar();
+	//printf("请输入a:");
+	////若没有获取到结束符，则不断进行循环从键盘输入获取字符，直到接收到结束符为止
+	//while (~scanf("%c", &a))
+	//{
+	//	//加入序列合法性校验，若输入不为合法数字则跳出当前循环，继续从键盘输入获取字符，若为合法数字则进行数组存储与打印
+	//	if ((a >= 'A') && (a <= 'z'))
+	//	{
+	//		printf("请输入a:");
+	//		getchar();
+	//	}
+	//	else
+	//	{
+	//		break;
+	//	}
+	//	
+	//}
+	//	printf("The password entered is ：");
+	//	putchar(a);
+	//	printf("Please verify your password (Y/N) ：");
+
+	//	if (ret = 'Y')
+	//	{
+	//		printf("Success !\n");
+	//	}
+	//	else
+	//	{
+	//		printf("Give up !\n");
+	//	}
+	
+	
+	//for循环：for(表达式1;表达式2;表达式3){循环语句}
+	//表达式1：初始化部分，用于初始化循环变量 表达式2：条件判断部分，用于判断循环终止条件 表达式3：调整部分，用于循环完成后对循环条件的调整
+
+	return 0;
+}
